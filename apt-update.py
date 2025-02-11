@@ -3,7 +3,7 @@ import os
 import logging
 import logging.handlers
 
-version = "1.0.0"
+version = "1.0.1"
 my_logger = logging.getLogger('MyLogger')
 my_logger.setLevel(logging.DEBUG)
 handler = logging.handlers.SysLogHandler(address = '/dev/log')
@@ -25,9 +25,12 @@ def check_string():
 os.system('apt update 1>/tmp/aptupdate.log 2>/dev/null')
 
 
+
 if check_string():
   my_logger.debug("System is up to date...")
+  my_logger.debug("Process "+pname+ " RUNNING OUT no more to do")
 else:
+  my_logger.debug("Process "+pname+ " RUNNING IN we have packages do update")
   os.system('apt -y upgrade 1>/tmp/aptupdate.log 2>/dev/null')
 
 my_logger.debug("Process "+pname+ " finished ")
