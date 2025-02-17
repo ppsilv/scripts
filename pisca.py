@@ -1,7 +1,7 @@
 try:
-        import RPi.GPIO as gpio
+	import RPi.GPIO as gpio
 except RuntimeError:
-        print("Error: Impossible to import GPIO")
+	print("Error: Impossible to import GPIO")
 
 import time
 
@@ -14,9 +14,9 @@ gpio.setup(18, gpio.OUT)
 
 
 while True:
-  gpio.output(18, 1)
+  gpio.output(18, 0)
   time.sleep(0.1)
 
-  gpio.output(18, 0)
+  gpio.output(18, 1)
   time.sleep(1)
 
