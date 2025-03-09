@@ -1,0 +1,11 @@
+[Unit]
+Description=Rackbox Fan Controller Service
+After=network.target
+[Service]
+ExecStart=/home/pdsilva/bin/rpi4_fanp17_daemon
+Restart=always
+User=root
+Group=root
+[Install]
+WantedBy=multi-user.target
+
