@@ -1,5 +1,8 @@
 #!/bin/bash
 #copie esse arquivo para /etc e garante que ele tenha direito de execução
-/home/pdsilva/bin/fan.sh
+#This service went to systemd
+#/home/pdsilva/bin/fan.sh
+/home/pdsilva/bin/pisca.sh
+
 exit 0
 

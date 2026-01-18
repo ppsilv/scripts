@@ -1,9 +1,9 @@
 [Unit]
-Description=Rackbox Fan Controller Service
+Description=Rackbox LED Controller Service
 After=network.target
 
 [Service]
-ExecStart=/home/pdsilva/bin/rpi4_fanp17_daemon
+ExecStart=/home/pdsilva/bin/led_daemon
 Restart=always
 User=root
 Group=root
