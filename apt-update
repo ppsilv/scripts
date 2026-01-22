@@ -1,20 +1,51 @@
-#!/bin/sh
+#!/bin/bash
 
-set -e
+set -e  # Sai no primeiro erro
+LOGFILE="/var/log/auto_update_$(date +%Y%m%d_%H%M%S).log"
+exec > >(tee -a "$LOGFILE") 2>&1
 
+logger "apt_update: iniciando procedimento automático"
 
-logger "apt_update: fazendo update automatico"
-logger "apt_update: **************************************************************************"
-apt -y autoremove
-logger "apt_update: **************************************************************************"
-apt update
-logger "apt_update: **************************************************************************"
-apt -y upgrade
-logger "apt_update: finished *****************************************************************"
-# Verificar se o script existe e é executável
-if [ -x "/home/pdsilva/bin/apt_upgrade.sh" ]; then
-    /home/pdsilva/bin/apt_upgrade.sh
+echo "=== $(date) ==="
+echo "Usuário: $(whoami)"
+echo "Hostname: $(hostname)"
+
+# Autoremove com confirmação automática
+echo "Executando apt autoremove..."
+apt-get -y autoremove
+RET1=$?
+echo "apt autoremove retornou: $RET1"
+logger "**************************************************************************"
+
+# Update
+echo "Executando apt update..."
+apt-get update
+RET2=$?
+echo "apt update retornou: $RET2"
+logger "**************************************************************************"
+
+# Upgrade com confirmação automática
+echo "Executando apt upgrade..."
+apt-get -y upgrade
+RET3=$?
+echo "apt upgrade retornou: $RET3"
+logger "**************************************************************************"
+
+# Script adicional se existir
+SCRIPT_EXTRA="/home/pdsilva/bin/apt_upgrade.sh"
+if [ -x "$SCRIPT_EXTRA" ]; then
+    echo "Executando script adicional: $SCRIPT_EXTRA"
+    "$SCRIPT_EXTRA"
+    RET4=$?
+    echo "Script adicional retornou: $RET4"
 else
-    logger "ERRO: apt_upgrade.sh não encontrado ou não executável"
+    echo "Script adicional não encontrado: $SCRIPT_EXTRA"
+    RET4=0
 fi
-/home/pdsilva/bin/apt_upgrade.sh
+
+logger "**************************************************************************"
+echo "=== Procedimento completo em $(date) ==="
+echo "Status: autoremove=$RET1, update=$RET2, upgrade=$RET3, extra=$RET4"
+
+# Retorna erro se algum comando falhou
+exit $((RET1 | RET2 | RET3 | RET4))
