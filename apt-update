@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -e
+
+
+logger "apt_update: fazendo update automatico"
+logger "apt_update: **************************************************************************"
+apt -y autoremove
+logger "apt_update: **************************************************************************"
+apt update
+logger "apt_update: **************************************************************************"
+apt -y upgrade
+logger "apt_update: finished *****************************************************************"
+# Verificar se o script existe e é executável
+if [ -x "/home/pdsilva/bin/apt_upgrade.sh" ]; then
+    /home/pdsilva/bin/apt_upgrade.sh
+else
+    logger "ERRO: apt_upgrade.sh não encontrado ou não executável"
+fi
+/home/pdsilva/bin/apt_upgrade.sh
