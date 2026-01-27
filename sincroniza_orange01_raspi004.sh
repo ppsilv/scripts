@@ -46,8 +46,8 @@ sincroniza_dir() {
         return 1
     fi
     
-    # Executa rsync
-    rsync -av --stats \
+    # Executa rsync COM --delete
+    rsync -av --delete --stats \
         --timeout=300 \
         --contimeout=300 \
         "$origem/" "$destino"
