@@ -25061,3 +25061,81 @@ tomaladaca/t3/TLDC.03x07.PE.part4.rar
 tomaladaca/t3/TLDC.03x08.PE.avi
 tomaladaca/t3/TLDC.03x08.PE.part1.rar
 tomaladaca/t3/TLDC.03x08.PE.part2.rar
+tomaladaca/t3/TLDC.03x09.PE.avi
+tomaladaca/t3/TLDC.03x09.PE.part1.rar
+tomaladaca/t3/TLDC.03x09.PE.part2.rar
+tomaladaca/t3/TLDC.03x10.PE.avi
+tomaladaca/t3/TLDC.03x10.PE.part1.rar
+tomaladaca/t3/TLDC.03x10.PE.part2.rar
+tomaladaca/t3/TLDC.03x11.PE.avi
+tomaladaca/t3/TLDC.03x11.PE.part1.rar
+tomaladaca/t3/TLDC.03x11.PE.part2.rar
+tomaladaca/t3/TLDC.03x12.PE.avi
+tomaladaca/t3/TLDC.03x12.PE.part1.rar
+tomaladaca/t3/TLDC.03x12.PE.part2.rar
+tomaladaca/t3/TLDC.03x13.VCVix.avi
+tomaladaca/t3/TLDC.03x13.VCVix.part1.rar
+tomaladaca/t3/TLDC.03x13.VCVix.part2.rar
+tomaladaca/t3/TLDC.03x14.VCVix.part1.rar
+tomaladaca/t3/TLDC.03x14.VCVix.part2.rar
+tomaladaca/t3/TLDC.03x15.VCVix.part1.rar
+tomaladaca/t3/TLDC.03x15.VCVix.part2.rar
+tomaladaca/t3/TLDC.03x16.VCVix.part1.rar
+tomaladaca/t3/TLDC.03x16.VCVix.part2.rar
+tomaladaca/t3/TLDC.03x17.VCVix.part1.rar
+tomaladaca/t3/TLDC.03x17.VCVix.part2.rar
+tomaladaca/t3/TLDC.03x18.VCVix.part1.rar
+tomaladaca/t3/TLDC.03x18.VCVix.part2.rar
+tomaladaca/t3/TLDC.03x19.part1.rar
+tomaladaca/t3/TLDC.03x19.part2.rar
+tomaladaca/t3/TLDC.03x20.VCVix.part1.rar
+tomaladaca/t3/TLDC.03x20.VCVix.part2.rar
+tomaladaca/t3/TLDC.03x21.VCVix.720p.part1.rar
+tomaladaca/t3/TLDC.03x21.VCVix.720p.part2.rar
+tomaladaca/t3/TLDC.03x21.VCVix.720p.part3.rar
+tomaladaca/t3/TLDC.03x21.VCVix.720p.part4.rar
+tomaladaca/t3/TLDC.03x21.VCVix.720p.part5.rar
+tomaladaca/t3/TLDC.03x22.VCVix.part1.rar
+tomaladaca/t3/TLDC.03x22.VCVix.part2.rar
+tomaladaca/t3/TLDC.03x23.VCVix.part1.rar
+tomaladaca/t3/TLDC.03x23.VCVix.part2.rar
+tomaladaca/t3/TLDC.03x24.VCVix.part1.rar
+tomaladaca/t3/TLDC.03x24.VCVix.part2.rar
+tomaladaca/t3/TLDC.03x25.VCVix.part1.rar
+tomaladaca/t3/TLDC.03x25.VCVix.part2.rar
+tomaladaca/t3/TLDC.03x26.VCVix.part1.rar
+tomaladaca/t3/TLDC.03x26.VCVix.part2.rar
+tomaladaca/t3/TLDC.03x27.VCVix.part1.rar
+tomaladaca/t3/TLDC.03x27.VCVix.part2.rar
+tomaladaca/t3/TLDC.03x28.VCVix.part1(1).rar
+tomaladaca/t3/TLDC.03x28.VCVix.part2(1).rar
+tomaladaca/t3/TLDC.03x29.VCVix.part1(1).rar
+tomaladaca/t3/TLDC.03x29.VCVix.part2(1).rar
+tomaladaca/t3/TLDC.03x30.VCVix.part1(1).rar
+tomaladaca/t3/TLDC.03x30.VCVix.part2(1).rar
+tomaladaca/t3/TLDC.03x31.VCVix.part1(1).rar
+tomaladaca/t3/TLDC.03x31.VCVix.part2(1).rar
+tomaladaca/t3/TLDC.03x32.VCVix.part1(1).rar
+tomaladaca/t3/TLDC.03x32.VCVix.part2(1).rar
+tomaladaca/t3/TLDC.03x33.VCVix.part1(1).rar
+tomaladaca/t3/TLDC.03x33.VCVix.part2(1).rar
+tomaladaca/t3/TLDC.03x34.VCVix.part1.rar
+tomaladaca/t3/TLDC.03x34.VCVix.part2.rar
+tomaladaca/t3/TLDC.03x34.VCVix.part3.rar
+tomaladaca/t3/TLDC.03x21.VCVix.720p/
+tomaladaca/t3/TLDC.03x21.VCVix.720p/TLDC.03x21.VCVix.720p.avi
+
+sent 59,675,794,753 bytes  received 6,180 bytes  52,508,403.81 bytes/sec
+total size is 59,661,207,295  speedup is 1.00
+sending incremental file list
+rsync: [sender] change_dir "/home/pdsilva/Documents/0000_Projeto" failed: No such file or directory (2)
+
+sent 23 bytes  received 12 bytes  23.33 bytes/sec
+total size is 0  speedup is 0.00
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+sending incremental file list
+rsync: [sender] change_dir "/home/pdsilva/Documents/0000_Projeto" failed: No such file or directory (2)
+
+sent 19 bytes  received 12 bytes  62.00 bytes/sec
+total size is 0  speedup is 0.00
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]

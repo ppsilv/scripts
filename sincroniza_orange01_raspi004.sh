@@ -11,7 +11,7 @@ SSH_DEST="/home/pdsilva/Documents"
 
 # Array com os diretórios para sincronizar
 DIRETORIOS=(
-    "0000_Projeto"
+    "0000_Projetos"
     "0000_Videos" 
     "0000_Eletronica"
     "00000_Datasheets"
@@ -46,11 +46,11 @@ sincroniza_dir() {
         return 1
     fi
     
+   
     # Executa rsync COM --delete
     rsync -av --delete --stats \
         --timeout=300 \
-        --contimeout=300 \
-        "$origem/" "$destino"
+        "$origem/" "$destino" >> /var/log/rsync.log 2>&1
     
     local resultado=$?
     
