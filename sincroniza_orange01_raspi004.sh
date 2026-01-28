@@ -58,6 +58,7 @@ sincroniza_dir() {
         log_syslog "info" "SUCESSO: $dir sincronizado"
     else
         log_syslog "err" "ERRO $resultado: Falha ao sincronizar $dir"
+	echo "erro ao sincronizar $dir !" | mail -s "rsync orange01->raspi004" pdsilva@lab.lan
     fi
     
     return $resultado
