@@ -1,0 +1,4 @@
+#!/bin/bash
+
+./3des -d -k 853f31351e51cd9c5222c28e408bf2a3 -D 853f31351e51cd9c5222c28e408bf2a3
+
