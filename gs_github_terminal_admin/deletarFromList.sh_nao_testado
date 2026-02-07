@@ -1,0 +1,128 @@
+#!/bin/bash
+
+# ============================================
+# DELETAR MÚLTIPLOS REPOSITÓRIOS
+# ============================================
+
+echo "=== DELETADOR EM MASSA DE REPOSITÓRIOS ==="
+echo ""
+
+# Verificar autenticação
+if ! gh auth status &> /dev/null; then
+    echo "ERRO: Execute 'gh auth login' primeiro!"
+    exit 1
+fi
+
+# Obter seu username
+MEU_USER=$(gh api user --jq '.login')
+echo "Usuário: $MEU_USER"
+echo ""
+
+# Arquivo com lista de repositórios para deletar
+LISTA="repos_para_deletar.txt"
+
+# Verificar se o arquivo existe
+if [ ! -f "$LISTA" ]; then
+    echo "❌ Arquivo '$LISTA' não encontrado."
+    echo ""
+    echo "Crie um arquivo '$LISTA' com a lista de repositórios."
+    echo "Um repositório por linha, formato: usuario/repositorio"
+    echo ""
+    echo "Exemplo do conteúdo:"
+    echo "$MEU_USER/teste-1"
+    echo "$MEU_USER/projeto-antigo"
+    echo "$MEU_USER/exemplo"
+    exit 1
+fi
+
+# Mostrar lista
+echo "📋 Lista de repositórios para deletar:"
+echo "----------------------------------------"
+cat "$LISTA" | nl -w2 -s'. '
+echo "----------------------------------------"
+TOTAL=$(wc -l < "$LISTA")
+echo "Total: $TOTAL repositórios"
+echo ""
+
+# Confirmação
+echo "⚠️  ⚠️  ATENÇÃO: OPERAÇÃO IRREVERSÍVEL! ⚠️  ⚠️"
+echo "Todos estes repositórios serão DELETADOS PERMANENTEMENTE."
+echo ""
+
+read -p "Continuar? (s/n): " -n 1 -r
+echo ""
+if [[ ! $REPLY =~ ^[Ss]$ ]]; then
+    echo "❌ Operação cancelada."
+    exit 0
+fi
+
+# Confirmação FINAL
+echo "Digite 'CONFIRMAR-DELETAR-TUDO' para prosseguir:"
+read CONFIRMACAO_FINAL
+
+if [ "$CONFIRMACAO_FINAL" != "CONFIRMAR-DELETAR-TUDO" ]; then
+    echo "❌ Operação cancelada (confirmação incorreta)."
+    exit 0
+fi
+
+# Processar cada repositório
+echo ""
+echo "🔄 Iniciando deleção..."
+echo ""
+
+SUCESSO=0
+FALHA=0
+
+while IFS= read -r REPO || [ -n "$REPO" ]; do
+    # Pular linhas vazias
+    [[ -z "$REPO" ]] && continue
+    
+    echo "--------------------------------------------------"
+    echo "Processando: $REPO"
+    
+    # Verificar se o repositório existe
+    if gh repo view "$REPO" &> /dev/null; then
+        echo "✅ Repositório encontrado"
+        
+        # Deletar
+        if gh repo delete "$REPO" --yes; then
+            echo "✅ DELETADO: $REPO"
+            ((SUCESSO++))
+        else
+            echo "❌ Falha ao deletar: $REPO"
+            ((FALHA++))
+        fi
+    else
+        echo "⚠️  Repositório não encontrado ou sem permissão: $REPO"
+        ((FALHA++))
+    fi
+    
+    # Aguardar para não sobrecarregar a API
+    sleep 1
+    
+done < "$LISTA"
+
+# Relatório final
+echo ""
+echo "========================================"
+echo "📊 RELATÓRIO FINAL"
+echo "========================================"
+echo "Total processado: $TOTAL"
+echo "✅ Sucesso: $SUCESSO"
+echo "❌ Falhas: $FALHA"
+echo "========================================"
+
+# Salvar log
+LOG="delecao_$(date +%Y%m%d_%H%M%S).log"
+{
+    echo "Data: $(date)"
+    echo "Usuário: $MEU_USER"
+    echo "Total: $TOTAL"
+    echo "Sucesso: $SUCESSO"
+    echo "Falhas: $FALHA"
+    echo ""
+    echo "Repositórios processados:"
+    cat "$LISTA"
+} > "$LOG"
+
+echo "Log salvo em: $LOG"
