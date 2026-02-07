@@ -1,0 +1,12 @@
+I have 4 raspberry PIs with linux ubuntu installed on them, they were for building a cluster but I never did it and the cpus was left over for other projects.
+One of them I call raspi003, I put an IOTStack with Mediawiki, Nextcloud, MariaDB, PHPmyadmin, Wireguard, Mosquitto and Portainer to orchestrate all this.
+Another one is called raspi002 and in it I have a system that is checking all the time if the other raspberrys are running and if the internet is up.
+One of them mysteriously stopped working, I've already checked all the voltages on the power supply and they are as the electrical schematic says they should be so I considered a drop in my equipment.
+The 4th is currently underutilized, doing nothing important.
+
+So I decided to make this project to create some scripts and dashboard to know the status of my raspberrys and the system running on them.
+
+1 - Check if the internet is up.
+2 - Check if the machines listed in a file are responding to a ping.
+3 - When the electricity from the concessionaire fails, manage the machines listed in item 2 to turn off before the UPS fails.
+4 - Hardware with an attiny to control the power-on and power-off of the raspberry PI.
